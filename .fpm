@@ -1,0 +1,27 @@
+-s dir ./target/debug/airgorah ./target/debug/airgorah-agent ./crates/gui/icons/app_icon.png package README.md LICENSE NOTICE.md
+--name airgorah-rt
+--license MIT
+--version 0.9.0-rt1
+--description "A WiFi security auditing software (Red Team fork of Airgorah, original by Martin Olivier)"
+--url "https://github.com/Syed-Muhammad-Tayyab/Airgorah-RT"
+--maintainer "Syed Muhammad Tayyab <https://github.com/Syed-Muhammad-Tayyab>"
+
+--provides airgorah-rt
+--conflicts airgorah-rt
+
+--depends bash
+--depends xterm
+--depends iw
+--depends macchanger
+--depends adwaita-icon-theme
+
+target/debug/airgorah=/usr/bin/airgorah
+target/debug/airgorah-agent=/usr/bin/airgorah-agent
+crates/gui/icons/app_icon.png=/usr/share/pixmaps/airgorah.png
+
+package/.desktop=/usr/share/applications/com.molivier.airgorah.desktop
+package/.policy=/usr/share/polkit-1/actions/org.freedesktop.policykit.airgorah.policy
+
+README.md=/usr/share/doc/airgorah-rt/README.md
+LICENSE=/usr/share/doc/airgorah-rt/LICENSE
+NOTICE.md=/usr/share/doc/airgorah-rt/NOTICE.md
