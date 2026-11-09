@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.syed.airgorahrt</id>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  <name>Airgorah-RT</name>
+  <summary>WiFi security auditing tool, a Red Team fork of Airgorah</summary>
+  <description>
+    <p>
+      Airgorah-RT is a Red Team-focused fork of Airgorah, a WiFi security
+      auditing tool that captures nearby WiFi traffic, discovers clients
+      connected to access points, performs deauthentication attacks,
+      captures handshakes and PMKIDs, and cracks access point passwords.
+    </p>
+    <p>
+      This fork adds a System/Light/Dark appearance setting and additional
+      native packaging (including this Flatpak manifest) on top of the
+      upstream Airgorah project by Martin Olivier.
+    </p>
+  </description>
+  <launchable type="desktop-id">com.syed.airgorahrt.desktop</launchable>
+  <url type="homepage">https://github.com/Syed-Muhammad-Tayyab/Airgorah-RT</url>
+  <developer_name>Syed Muhammad Tayyab</developer_name>
+  <content_rating type="oars-1.1" />
+  <releases>
+    <release version="0.9.0-rt1" date="2026-11-09">
+      <description>
+        <p>Initial Airgorah-RT fork: Appearance (theme) setting and Flatpak packaging.</p>
+      </description>
+    </release>
+  </releases>
+</component>

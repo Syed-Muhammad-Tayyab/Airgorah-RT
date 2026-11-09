@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Airgorah-RT
+GenericName=WiFi Security Auditor
+Comment=WiFi security auditing tool (Red Team fork of Airgorah)
+Exec=airgorah
+Icon=com.syed.airgorahrt
+Terminal=false
+Categories=Network;Security;
+Keywords=wifi;wireless;security;pentest;deauth;handshake;

@@ -1,0 +1,46 @@
+app-id: com.syed.airgorahrt
+runtime: org.gnome.Platform
+runtime-version: "47"
+sdk: org.gnome.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-stable
+command: airgorah
+
+finish-args:
+  # GUI
+  - --share=ipc
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --device=dri
+  # Airgorah needs a privileged agent (launched via polkit) for packet
+  # capture / monitor mode, plus network access for vendor DB lookups.
+  - --talk-name=org.freedesktop.PolicyKit1
+  - --share=network
+  - --system-talk-name=org.freedesktop.NetworkManager
+
+build-options:
+  append-path: /usr/lib/sdk/rust-stable/bin
+  # Networking is required during the build to fetch crates.io
+  # dependencies. For a fully offline/reproducible Flatpak build, generate
+  # packaging/flatpak/cargo-sources.json with flatpak-cargo-generator
+  # (https://github.com/flatpak/flatpak-builder-tools) from Cargo.lock and
+  # add it as a "generated-sources" module before this one.
+  build-args:
+    - --share=network
+
+modules:
+  - name: airgorah-rt
+    buildsystem: simple
+    build-commands:
+      - cargo build --release --offline=false
+      - install -Dm755 target/release/airgorah /app/bin/airgorah
+      - install -Dm755 target/release/airgorah-agent /app/bin/airgorah-agent
+      - install -Dm644 crates/gui/icons/app_icon.png
+          /app/share/icons/hicolor/256x256/apps/com.syed.airgorahrt.png
+      - install -Dm644 packaging/flatpak/com.syed.airgorahrt.desktop
+          /app/share/applications/com.syed.airgorahrt.desktop
+      - install -Dm644 packaging/flatpak/com.syed.airgorahrt.metainfo.xml
+          /app/share/metainfo/com.syed.airgorahrt.metainfo.xml
+    sources:
+      - type: dir
+        path: ../..
